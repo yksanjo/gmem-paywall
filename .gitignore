@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.local
+*.local
+*.local.md
+*.log
+.DS_Store
+*.db
+*.sqlite
+*.sqlite3
+.gmem/
+coverage/
