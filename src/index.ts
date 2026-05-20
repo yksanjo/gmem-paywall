@@ -18,6 +18,7 @@
  */
 import { config } from "dotenv";
 import express from "express";
+import cors from "cors";
 import { paymentMiddleware, x402ResourceServer } from "@x402/express";
 import { ExactSvmScheme } from "@x402/svm/exact/server";
 import { ExactEvmScheme } from "@x402/evm/exact/server";
@@ -79,6 +80,16 @@ const resourceServer = new x402ResourceServer(facilitatorClient)
 if (evmPayTo) resourceServer.register(BASE_MAINNET, new ExactEvmScheme());
 
 const app = express();
+// Allow any origin: x402 clients live in browser tabs, agents, and CLIs. We
+// expose the PAYMENT-REQUIRED header explicitly so browser clients can read it.
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "X-Payment", "Authorization"],
+    exposedHeaders: ["PAYMENT-REQUIRED", "X-Payment", "X-Settlement-Response"],
+  }),
+);
 app.use(express.json({ limit: "256kb" }));
 
 /* ─── Paywall middleware ─────────────────────────────────────────────── */

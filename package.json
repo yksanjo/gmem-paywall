@@ -13,11 +13,13 @@
     "test:probe": "tsx src/scripts/probe.ts"
   },
   "dependencies": {
+    "@types/cors": "^2.8.19",
     "@x402/core": "^2.12.0",
-    "@x402/express": "^2.12.0",
     "@x402/evm": "^2.12.0",
+    "@x402/express": "^2.12.0",
     "@x402/svm": "^2.12.0",
     "@yksanjo/gmem": "^1.1.0",
+    "cors": "^2.8.6",
     "dotenv": "^16.4.5",
     "express": "^4.21.2"
   },
