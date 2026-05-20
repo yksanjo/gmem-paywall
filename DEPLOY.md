@@ -16,7 +16,7 @@ The Pi already has Cloudflare Tunnel + Caddy. We piggyback on that.
 ### Step 1.1 — SSH in and clone
 
 ```bash
-ssh yojinbot@100.109.137.47
+ssh -p 4588 yojinbot@100.109.137.47
 cd ~
 git clone https://github.com/yksanjo/gmem-paywall.git
 cd gmem-paywall
@@ -171,7 +171,7 @@ Free tier: 1,000 transactions/month. Then $0.0001 per tx. You'll never hit this 
 ### Step 2.2 — Update .env on the Pi
 
 ```bash
-ssh yojinbot@100.109.137.47
+ssh -p 4588 yojinbot@100.109.137.47
 cd ~/gmem-paywall
 nano .env
 ```
@@ -289,5 +289,5 @@ I'll write the test page when you tell me you've shipped Phase 1 + 2.
 ## Status check commands (for future you)
 
 ```bash
-ssh yojinbot@100.109.137.47 'pm2 status gmem-paywall && curl -s http://localhost:4021/v1/info | head -20'
+ssh -p 4588 yojinbot@100.109.137.47 'pm2 status gmem-paywall && curl -s http://localhost:4021/v1/info | head -20'
 ```
